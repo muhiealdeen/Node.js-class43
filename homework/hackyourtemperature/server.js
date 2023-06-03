@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express';
+// const express = require('express');
 const app = express();
 app.use(express.json());
 
@@ -10,6 +11,7 @@ app.get('/', (req, res) => {
 app.post('/weather', (req, res) => {
   try {
     const submittedCityName = req.body.cityName;
+    res.set('Content-Type', 'application/json');
     res.send(`You submitted: ${submittedCityName}`);
   } catch (error) {
     console.error(error);
