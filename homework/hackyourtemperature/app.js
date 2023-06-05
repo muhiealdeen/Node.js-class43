@@ -12,13 +12,13 @@ app.get('/', (req, res) => {
 
 app.post('/weather', async (req, res) => {
   const { cityName } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
 
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${keys.API_KEY}`,
   );
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   if (data.cod === '404') {
     res.status(404).json({ weatherText: 'City not found' });
   } else {
@@ -26,6 +26,7 @@ app.post('/weather', async (req, res) => {
     res
       .status(200)
       .json({ Weather: `Temperature in ${cityName}:${teperature}` });
+    console.log({ Weather: `Temperature in ${cityName}:${teperature}` });
   }
 });
 
